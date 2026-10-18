@@ -118,7 +118,7 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    const GOOGLE_SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwhj3FzMoA7ilnc05L6ZBZCZS3if5NVCHD52Tdr5XSPc4sb-rMVqrXkGxttj_kiAlV9bA/exec";
+    const GOOGLE_SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzRYaoBoq3gKN3JAxC2ss3QwFYnpTuYmoUv9m8BnowS66qXrOoOpgtf4vVKmAULVf7/exec";
 
     const loginScreen = document.getElementById('login-screen');
     const formScreen = document.getElementById('form-screen');
@@ -145,7 +145,9 @@
         })
         .catch((error) => {
           console.error(error);
-          errorMsg.textContent = `Firebase Error: ${error.message}`;
+          errorMsg.textContent = error.code === 'auth/configuration-not-found'
+            ? 'Google Sign-In is not configured for this Firebase project. Enable Google sign-in in Firebase Console, then try again.'
+            : `Firebase Error: ${error.message}`;
           errorMsg.classList.remove('hidden');
           loginBtn.disabled = false;
           loginBtn.innerHTML = `
