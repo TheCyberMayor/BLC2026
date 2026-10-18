@@ -3,103 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Registration</title>
+  <title>BLC 2026 - Event Registration</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            title: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              forest: '#2d5a1e',
+              deepForest: '#1e3d14',
+              gold: '#c29b38',
+              goldLight: '#e4b647',
+              sky: '#3a7bd5',
+              cream: '#fcfdfa',
+              card: '#f9faf6'
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen bg-gradient-to-b from-[#2b6cb0] via-[#85a9c5] to-[#cbb279] text-gray-800 font-sans p-4 sm:p-6 flex flex-col justify-between items-center relative overflow-x-hidden selection:bg-brand-forest selection:text-white">
 
-  <div class="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden">
-    <!-- Header -->
-    <div class="bg-blue-600 text-white p-6 text-center">
-      <h1 class="text-2xl font-bold mb-2">Event Registration</h1>
-      <p class="text-blue-100 text-sm">Please complete your details below</p>
-    </div>
+  <!-- Background overlay pattern -->
+  <div class="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-    <!-- Step 1: Login Screen -->
-    <div id="login-screen" class="p-8 text-center">
-      <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-        </svg>
+  <div class="w-full max-w-xl z-10 my-auto">
+    
+    <!-- Header Badge Section -->
+    <header class="bg-brand-deepForest/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 text-white shadow-xl mb-4 border border-brand-gold/30 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-forest shadow-inner flex-shrink-0">
+          <svg class="w-6 h-6 text-brand-goldLight" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-xs sm:text-sm font-bold tracking-wider uppercase text-emerald-300">Feeding Centre Church</h2>
+          <p class="text-[10px] text-gray-300">The Word Works!</p>
+        </div>
       </div>
-      <h2 class="text-xl font-semibold text-gray-800 mb-2">Welcome</h2>
-      <p class="text-gray-500 text-sm mb-8">Sign in with Google to autofill your details, or fill in the form manually.</p>
 
-      <button id="google-login-btn" class="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-6 py-3 text-gray-700 font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
-        <svg class="w-5 h-5" viewBox="0 0 24 24">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        Continue with Google
-      </button>
-      <button type="button" id="manual-registration-btn" class="w-full mt-3 py-3 px-6 border border-blue-600 rounded-lg text-blue-600 font-medium hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
-        Fill in manually
-      </button>
-      <p id="error-msg" class="text-red-500 text-sm mt-4 hidden"></p>
+      <div class="text-right flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full border border-brand-gold/60 flex flex-col items-center justify-center text-[9px] font-bold leading-tight bg-white/10">
+          <span>BLC</span>
+          <span class="text-brand-goldLight">2026</span>
+        </div>
+        <div class="hidden sm:block text-left">
+          <p class="text-xs font-bold leading-none uppercase">Bread of Life</p>
+          <p class="text-[10px] text-brand-goldLight font-semibold tracking-wider uppercase">Convention</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Theme Titles -->
+    <div class="text-center my-4">
+      <p class="text-xs font-semibold uppercase tracking-widest text-brand-deepForest drop-shadow-sm mb-1">Theme</p>
+      <h1 class="font-title text-3xl sm:text-5xl font-black text-white tracking-wide drop-shadow-[0_4px_8px_rgba(0,0,0,0.45)]">
+        I SHALL NOT BE BARREN
+      </h1>
+      <div class="inline-block mt-2 bg-brand-deepForest/85 text-brand-goldLight text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full border border-brand-gold/40 shadow-md">
+        Wednesday 21st – Sunday 25th October, 2026
+      </div>
     </div>
 
-    <!-- Step 2: Form Screen -->
-    <div id="form-screen" class="p-6 hidden">
-      <form id="registration-form" class="space-y-4">
-        
-        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
-          <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-3">Profile Data</p>
-          <div class="space-y-3">
+    <!-- Main Registration Card -->
+    <main class="bg-brand-card/95 backdrop-blur-md rounded-2xl shadow-2xl border-2 border-brand-forest/20 p-6 sm:p-8 transition-all">
+      
+      <!-- Step 1: Login Choice -->
+      <div id="login-screen" class="text-center">
+        <div class="w-16 h-16 rounded-full bg-brand-forest/10 border-2 border-brand-forest/30 flex items-center justify-center mx-auto mb-3 shadow-inner">
+          <svg class="w-8 h-8 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-brand-deepForest">Registration Access</h3>
+        <p class="text-gray-600 text-xs sm:text-sm mt-1 mb-6">Join us for this life-transforming convention.</p>
+
+        <button id="google-login-btn" class="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 rounded-xl px-5 py-3 text-gray-700 font-semibold shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-forest transition">
+          <svg class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <div class="relative my-4 flex items-center justify-center">
+          <div class="border-t border-gray-300 w-full"></div>
+          <span class="bg-brand-card px-3 text-xs text-gray-500 uppercase font-semibold">Or</span>
+          <div class="border-t border-gray-300 w-full"></div>
+        </div>
+
+        <button type="button" id="manual-registration-btn" class="w-full py-3 px-5 border-2 border-brand-forest text-brand-forest rounded-xl font-bold hover:bg-brand-forest hover:text-white transition shadow-sm">
+          Fill in manually
+        </button>
+        <p id="error-msg" class="text-rose-600 text-xs mt-3 hidden"></p>
+      </div>
+
+      <!-- Step 2: Form Screen -->
+      <div id="form-screen" class="hidden">
+        <h3 class="text-lg font-bold text-brand-deepForest mb-4 border-b border-gray-200 pb-2">Attendee Information</h3>
+        <form id="registration-form" class="space-y-4">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name *</label>
-              <input type="text" id="fullName" name="fullName" required readonly class="mt-1 block w-full bg-transparent border-0 border-b border-blue-200 focus:ring-0 text-gray-900 font-medium px-0 pb-1">
+              <label for="fullName" class="block text-xs font-bold text-gray-700 uppercase mb-1">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Full Name"
+                class="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-brand-forest focus:ring-0 outline-none transition bg-white">
             </div>
+
             <div>
-              <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
-              <input type="email" id="email" name="email" required readonly class="mt-1 block w-full bg-transparent border-0 border-b border-blue-200 focus:ring-0 text-gray-600 px-0 pb-1">
+              <label for="email" class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="Email Address"
+                class="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-brand-forest focus:ring-0 outline-none transition bg-white">
             </div>
           </div>
-        </div>
 
-        <div>
-          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="e.g. +234 800 000 0000" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-        </div>
+          <div>
+            <label for="phone" class="block text-xs font-bold text-gray-700 uppercase mb-1">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="e.g. +234 800 000 0000"
+              class="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-brand-forest focus:ring-0 outline-none transition bg-white">
+          </div>
 
-        <div>
-          <label for="source" class="block text-sm font-medium text-gray-700">How did you hear about the program? *</label>
-          <select id="source" name="source" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white">
-            <option value="" disabled selected>Select an option</option>
-            <option value="Church Announcement">Church Announcement</option>
-            <option value="Social Media">Social Media</option>
-            <option value="Friend or Family">Friend or Family</option>
-            <option value="Flyer/Poster">Flyer / Poster</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
+          <div>
+            <label for="source" class="block text-xs font-bold text-gray-700 uppercase mb-1">How did you hear about the program? *</label>
+            <select id="source" name="source" required
+              class="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-brand-forest focus:ring-0 outline-none transition bg-white text-gray-700">
+              <option value="" disabled selected>Select an option</option>
+              <option value="Church Announcement">Church Announcement</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Friend or Family">Friend or Family</option>
+              <option value="Flyer/Poster">Flyer / Poster</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-        <div>
-          <label for="church" class="block text-sm font-medium text-gray-700">Church Denomination/Fellowship *</label>
-          <input type="text" id="church" name="church" required placeholder="Enter your church name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-        </div>
+          <div>
+            <label for="church" class="block text-xs font-bold text-gray-700 uppercase mb-1">Church Denomination / Fellowship *</label>
+            <input type="text" id="church" name="church" required placeholder="e.g. Feeding Centre Church"
+              class="w-full rounded-lg border-2 border-gray-200 px-3 py-2 text-sm focus:border-brand-forest focus:ring-0 outline-none transition bg-white">
+          </div>
 
-        <input type="hidden" id="uid" name="uid">
+          <input type="hidden" id="uid" name="uid">
 
-        <div class="pt-4">
-          <button type="submit" id="submit-btn" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          <button type="submit" id="submit-btn" class="w-full mt-4 py-3.5 px-4 rounded-xl text-white font-bold bg-brand-forest hover:bg-brand-deepForest transition-all shadow-lg flex items-center justify-center tracking-wide uppercase text-sm border-b-4 border-brand-deepForest">
             Complete Registration
           </button>
-        </div>
-      </form>
-    </div>
-
-    <!-- Step 3: Success Screen -->
-    <div id="success-screen" class="p-8 text-center hidden">
-      <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
+        </form>
       </div>
-      <h2 class="text-xl font-semibold text-gray-800 mb-2">Registration Complete!</h2>
-      <p class="text-gray-500 text-sm">Thank you for registering. Your details have been securely saved.</p>
-    </div>
+
+      <!-- Step 3: Success Screen -->
+      <div id="success-screen" class="text-center py-6 hidden">
+        <div class="w-16 h-16 rounded-full bg-emerald-100 border-2 border-emerald-500 flex items-center justify-center mx-auto mb-4 text-emerald-600">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-brand-deepForest">Registration Complete!</h3>
+        <p class="text-gray-600 text-sm mt-2">We look forward to receiving you at Bread of Life Convention 2026.</p>
+      </div>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="mt-4 bg-brand-deepForest/95 backdrop-blur-md rounded-2xl p-4 text-white text-xs border border-brand-gold/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xl">
+      <div class="flex items-center gap-2">
+        <span class="bg-red-600 px-2 py-0.5 rounded text-[10px] font-extrabold uppercase animate-pulse">Live</span>
+        <span class="text-gray-200 font-medium">Bimbo Animashaun Teaching Ministries – BATEM</span>
+      </div>
+      <div class="text-gray-300 text-center sm:text-right">
+        <span>Feeding Centre Church Headquarters, Ile-Ife, Osun State</span>
+      </div>
+    </footer>
 
   </div>
 
@@ -137,8 +222,6 @@
     manualRegistrationBtn.addEventListener('click', () => {
       fullNameInput.readOnly = false;
       emailInput.readOnly = false;
-      fullNameInput.classList.remove('bg-transparent');
-      emailInput.classList.remove('bg-transparent');
       document.getElementById('uid').value = '';
       loginScreen.classList.add('hidden');
       formScreen.classList.remove('hidden');
